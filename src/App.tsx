@@ -18,7 +18,7 @@ const App = () => {
       const response = await fetch(
         "https://jsonplaceholder.typicode.com/users"
       );
-      
+
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -33,15 +33,9 @@ const App = () => {
     }
   };
 
-  // comunicarnos con un endpoint-entidad externa al componente
-  // operaciones async
-  //parametro de entrada
-
-  // consumir el endpoint se maneja segun el re-render de componente
-  // se utiliza para renderizar only Sync con entidades externas o fuera de la aplicacion ejemplo de api externa parametro de entrada
+ 
   useEffect(() => {
-    // se ejecuta 1- cuando se monta el componente o se renderiza el componente
-    // se ejecuta 2- cuando se modifique uno de los valor que esta adentro del arreglo de dependencias []
+   
   }, []);
 
   if (loading) {
