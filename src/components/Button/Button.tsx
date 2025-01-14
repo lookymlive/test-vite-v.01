@@ -8,7 +8,7 @@ interface Props {
 
 export const Button = ( { label, parentMethod }: Props) => {
   return (
-    <button onClick={parentMethod}>
+    <button onClick={parentMethod} className="custom-button"> 
       {label}
     </button>
   );
