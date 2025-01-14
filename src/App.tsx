@@ -1,35 +1,30 @@
-import { useFetch } from "./components";
-
-interface User {
-  id: number;
-  name: string;
-}
+import './App.css'
+import { AppForm, Button, ColorRed } from './components'
 
 
-const url = 'https://jsonplaceholder.typicode.com/users';
-
-
-function App () {
-  const { data, loading, error } = useFetch<User[]>(url);
-
-  if (loading) {
-    return <div>Loading...</div>;
+function App() {
+  const submit = () => {
+    console.log("submitted")
   }
 
-  if (error) {
-    return <div>Error: {error}</div>;
+  const handleClick = () => {
+    console.log("uy me clickio todo")
+  }
+
+  const dimeHola = () => {
+    alert("hola !!")
   }
 
   return (
-    <div>
-      <h1>Users</h1>
-      <ul>
-        <button onClick={() => {}} >Sort</button>
-        {data && data.map((user: User) => (
-          <li key={user.id}>{user.name}</li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-export default App;
+    <>
+      <ColorRed><Button parentMethod={dimeHola}>My Boton Azul</Button></ColorRed>
+      <Button parentMethod={handleClick}> My Boton Normal</Button>
+
+      <AppForm>
+        <button type="submit" onClick={submit} ></button>
+      </AppForm>
+    </>
+  )
+}
+
+export default App
