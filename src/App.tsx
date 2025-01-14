@@ -1,42 +1,16 @@
-import { useEffect, useState } from "react";
+import { useFetch } from "./components";
 
-const App = () => {
-  interface Post {
-    id: number;
-    name: string;
-    username: string;
-    email: string;
-  }
+interface User {
+  id: number;
+  name: string;
+}
 
-  const [data, setData] = useState<Post[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>("");
 
-  const fetchData = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/users"
-      );
+const url = 'https://jsonplaceholder.typicode.com/users';
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
 
-      const data = await response.json();
-      setData(data);
-    } catch (error) {
-      setError("Error fetching data");
-      console.error("Error fetching data:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
- 
-  useEffect(() => {
-   
-  }, []);
+function App () {
+  const { data, loading, error } = useFetch<User[]>(url);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -48,13 +22,11 @@ const App = () => {
 
   return (
     <div>
-      <h1>Lookym</h1>
-      <button onClick={fetchData}>User Data</button>
+      <h1>Users</h1>
       <ul>
-        {data.map((item) => (
-          <li>
-            {item.id} {item.name} {item.username} {item.email}
-          </li>
+        <button onClick={() => {}} >Sort</button>
+        {data && data.map((user: User) => (
+          <li key={user.id}>{user.name}</li>
         ))}
       </ul>
     </div>
